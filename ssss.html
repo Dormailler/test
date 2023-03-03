@@ -1,0 +1,59 @@
+<%@page import="com.mysql.cj.xdevapi.JsonArray"%>
+<%@page import="com.mysql.cj.xdevapi.JsonParser"%>
+<%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<style>
+    #rl{
+        text-align: center;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        margin-top:100px;
+        width: 300px;
+    }
+    button{
+        color:white;
+        background-color: rgb(16, 105, 81);
+        width: 400px;
+        height: 70px;
+    }
+    #button{
+        text-align: center;
+    }
+</style>
+<%
+	Object json = request.getAttribute("json");
+%>
+<script type="text/javascript">
+	function clicked(){
+		window.location.href = "http://localhost:8080/project2/todoForm.jsp"
+	}
+	var jsonObj = JSON.parse('${json}');
+	var idValue = jsonObj[0].id;
+</script>
+
+
+<h1 id="rl">나의 해야할 일들</h1>
+<br><br>
+<h1 id="1">ㄴㄴ</h1>
+<script type="text/javascript">
+	document.getElementById("1").innerHTML = idValue	
+</script>
+<%=json%>
+<div id="button"">
+<button id  = "todo" onclick = "clicked()"><h1>TODO</h1></button>
+<button id  = "todo" onclick = ""><h1>DOING</h1></button>
+<button id  = "todo" onclick = ""><h1>DONE</h1></button>
+</div><br>
+<div>
+</div>
+
+</body>
+</html>
